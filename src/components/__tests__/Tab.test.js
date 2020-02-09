@@ -4,15 +4,19 @@ import '@testing-library/jest-dom/extend-expect';
 
 import Tab from '../Tab';
 
+import { Provider } from 'react-redux';
+import { store } from '../../index'
 
-const testAppComponent = (
-    <Tab />
+const testComponent = (
+    <Provider store={store}>
+        <Tab />
+    </Provider>
 )
 
 describe("Tab", () => {
     it('renders without crashing', () => {
         const { getByTestId } = render(
-            testAppComponent
+            testComponent
         );
         const testTab = getByTestId('Tab');
         expect(testTab).toBeInTheDocument();
