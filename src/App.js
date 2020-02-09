@@ -2,6 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux'
 import { fetchingBills, fetchingCategories } from './store/actions/actions';
 
+import {
+  TabsContainer,
+  Button,
+} from './App.style';
+
 import Tab from './components/Tab'
 
 const App = props => {
@@ -17,20 +22,20 @@ const App = props => {
 
   return (
     <div data-testid="App">
-      <div className="switchBetweenTabs">
-        <div
-          active={toString(openTab === "bills")}
+      <TabsContainer className="switchBetweenTabs">
+        <Button
+          active={openTab === "bills"}
           onClick={() => setOpenTab("bills")}
         >
           Bills
-        </div>
-        <div
-          active={toString(openTab === "expenses")}
+        </Button>
+        <Button
+          active={openTab === "expenses"}
           onClick={() => setOpenTab("expenses")}
         >
           Expenses
-        </div>
-      </div>
+        </Button>
+      </TabsContainer>
       {
         openTab === "bills"
           ?

@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import TransactionCard from './TransactionCard'
-import {  } from './style/Tab.style'
+import { StyledTab } from './style/Tab.style'
 
 const Tab = ({ type = "Expenses" }) => {
     const transactions = useSelector(state => state.reducer.bills) || [];
@@ -11,7 +11,7 @@ const Tab = ({ type = "Expenses" }) => {
     const expenseArray = transactions.filter(trans => !trans.isBill)
 
     return (
-        <div data-testid="Tab">
+        <StyledTab data-testid="Tab">
             <h2 data-testid={type === "Bills" ? "Expenses" : "Bills"}>
                 {type}
             </h2>
@@ -37,7 +37,7 @@ const Tab = ({ type = "Expenses" }) => {
                     })
                 }
             </div>
-        </div>
+        </StyledTab>
     );
 }
 
