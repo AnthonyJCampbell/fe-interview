@@ -70,6 +70,25 @@ export const patchingBill = (isBill, id) => dispatch => {
             dispatch({
                 type: actionCreators.PATCHING_BILL_SUCCESS,
             })
+            dispatch({ type: actionCreators.FETCHING_BILLS })
+
+            axios.get(`${APIConstants.base}/bills`)
+                .then(res => {
+                    return dispatch({
+                        type: actionCreators.FETCHING_BILLS_SUCCESS,
+                        payload: {
+                            data: res.data
+                        }
+                    })
+                })
+                .catch(() => {
+                    return dispatch({
+                        type: actionCreators.FETCHING_BILLS_ERROR,
+                        payload: {
+                            errorMessage: "Error in retrieving your bills. Check your connection."
+                        }
+                    })
+                })
         })
         .catch(() => {
             return dispatch({

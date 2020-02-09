@@ -4,7 +4,7 @@
       "categoryId": 1,
       "iconUrl": "https://pbs.twimg.com/profile_images/915824582455627776/nsyHCFq9.jpg",
       "id": "5a5caa1efe33900100fd8ed5",
-      "isBill": false,
+      "isBill": true,
       "name": "Vodafone",
       "transactions": [
         {
@@ -174,7 +174,7 @@
       "categoryId": 3,
       "iconUrl": "https://pbs.twimg.com/profile_images/984840751929544704/iv3Y8YNC.jpg",
       "id": "5a5cab88fe33900100fd8eda",
-      "isBill": true,
+      "isBill": false,
       "name": "AMEX Payment",
       "transactions": [
         {
