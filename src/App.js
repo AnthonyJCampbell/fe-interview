@@ -18,20 +18,26 @@ const App = props => {
   return (
     <div data-testid="App">
       <div className="switchBetweenTabs">
-        <div 
-          active={openTab === "bills"} 
+        <div
+          active={openTab === "bills"}
           onClick={() => setOpenTab("bills")}
         >
           Bills
         </div>
-        <div 
+        <div
           active={openTab === "expenses"}
           onClick={() => setOpenTab("expenses")}
         >
           Expenses
         </div>
       </div>
-      {openTab}
+      {
+        openTab === "bills"
+          ?
+          <Tab type="Bills" />
+          :
+          <Tab type="Expenses" />
+      }
     </div>
   );
 }

@@ -63,15 +63,15 @@ describe("TransactionCard", () => {
 
     });
 
-    it('renders a "Remove Bill"-button when the card is configured as a bill', () => {
-        return false;
-    })
+    // it('renders a "Remove Bill"-button when the card is configured as a bill', () => {
+    //     return false;
+    // })
 
-    it('renders an "Add Bill"-button when the card is configured as an expense', () => {
-        return false;
-    })
+    // it('renders an "Add Bill"-button when the card is configured as an expense', () => {
+    //     return false;
+    // })
 
-    it('opens up TransactionsList when clicked', () => {
-        return false;
-    })
+    // it('opens up TransactionsList when clicked', () => {
+    //     return false;
+    // })
 })  
