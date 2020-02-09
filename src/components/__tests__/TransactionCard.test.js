@@ -88,13 +88,13 @@ describe("TransactionCard", () => {
     it('toggles TransactionsList when clicked', () => {
         const { queryByTestId } = render(
             testExpenseComponent
-        ); 
+        );
 
         expect(queryByTestId("TransactionsList")).not.toBeVisible();
 
         fireEvent.click(queryByTestId("MiddleRow"));
         expect(queryByTestId("TransactionsList")).toBeVisible();
-        
+
         fireEvent.click(queryByTestId("MiddleRow"));
         expect(queryByTestId("TransactionsList")).not.toBeVisible();
 
