@@ -19,13 +19,13 @@ const App = props => {
     <div data-testid="App">
       <div className="switchBetweenTabs">
         <div
-          active={openTab === "bills"}
+          active={toString(openTab === "bills")}
           onClick={() => setOpenTab("bills")}
         >
           Bills
         </div>
         <div
-          active={openTab === "expenses"}
+          active={toString(openTab === "expenses")}
           onClick={() => setOpenTab("expenses")}
         >
           Expenses

@@ -47,16 +47,21 @@ const testExpenseObject = {
     ]
 }
 
-const testComponent = (
+const testBillComponent = (
     <Provider store={store}>
-        <TransactionCard />
+        <TransactionCard transaction={testBillObject}/>
     </Provider>
 )
 
+const testExpenseComponent = (
+    <Provider store={store}>
+        <TransactionCard transaction={testExpenseObject}/>
+    </Provider>
+)
 describe("TransactionCard", () => {
     it('renders without crashing', () => {
         const { getByTestId } = render(
-            testComponent
+            testBillComponent
         );
         const testTransactionCard = getByTestId('TransactionCard');
         expect(testTransactionCard).toBeInTheDocument();
@@ -64,14 +69,23 @@ describe("TransactionCard", () => {
     });
 
     it('renders a "Remove Bill"-button when the card is configured as a bill', () => {
-        return false;
+        const { queryByTestId } = render(
+            testBillComponent
+        );
+        expect(queryByTestId('RemoveButton')).toBeInTheDocument()
+        expect(queryByTestId('AddButton')).not.toBeInTheDocument()
+
     })
 
     it('renders an "Add Bill"-button when the card is configured as an expense', () => {
-        return false;
+        const { queryByTestId } = render(
+            testExpenseComponent
+        );
+        expect(queryByTestId('AddButton')).toBeInTheDocument()
+        expect(queryByTestId('RemoveButton')).not.toBeInTheDocument()
     })
 
-    it('opens up TransactionsList when clicked', () => {
-        return false;
-    })
+    // it('opens up TransactionsList when clicked', () => {
+    //     return false;
+    // })
 })  
