@@ -42,6 +42,13 @@ const testComponent = (
     </Provider>
 )
 
+const visibleTestComponent = (
+    <Provider store={store}>
+        <TransactionsList visible={true} transactions={testTransactionsObject} />
+    </Provider>
+)
+
+
 describe("TransactionsList", () => {
     it('is not visible by default', () => {
         const { getByTestId } = render(
@@ -49,6 +56,15 @@ describe("TransactionsList", () => {
         );
         const testTransactionList = getByTestId('TransactionsList');
         expect(testTransactionList).not.toBeVisible();
+
+    });
+
+    it('renders all but the last item in the transactions array', () => {
+        const { queryByTestId } = render(
+            visibleTestComponent
+        );
+        expect(queryByTestId('item4')).not.toBeInTheDocument()
+        expect(queryByTestId('item3')).toBeInTheDocument()
 
     });
 })  
