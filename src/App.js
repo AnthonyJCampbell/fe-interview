@@ -5,6 +5,7 @@ import { fetchingBills, fetchingCategories } from './store/actions/actions';
 import {
   TabsContainer,
   Button,
+  StyledApp,
 } from './App.style';
 
 import Tab from './components/Tab'
@@ -21,7 +22,7 @@ const App = props => {
   }, [])
 
   return (
-    <div data-testid="App">
+    <StyledApp data-testid="App">
       <TabsContainer className="switchBetweenTabs">
         <Button
           active={openTab === "bills"}
@@ -43,7 +44,7 @@ const App = props => {
           :
           <Tab type="Expenses" />
       }
-    </div>
+    </StyledApp>
   );
 }
 

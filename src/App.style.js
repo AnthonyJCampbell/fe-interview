@@ -3,21 +3,29 @@ import { StyleConstants } from './shared/constants';
 
 const { colors, dimensions } = StyleConstants
 
-export const TabsContainer = styled.div`
-  width: 80%;
-  min-width: 300px;
-  max-width: 720px;
-  padding: 20px;
-  margin: 10vh auto 5vh;
+export const StyledApp = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
 
-  /* border: 1px solid red; */
+export const TabsContainer = styled.div`
+  width: 70%;
+  min-width: 400px;
+  padding: 20px;
+  margin: 10vh auto 5vh auto;
+
   background: ${colors.cardBackgroundLight};
   background: ${colors.cardBackgroundLightLinear};
-  border-radius: 12.5px;
+  border-radius: ${dimensions.cardBorderRadius};
   
   display: flex;
   justify-content: center;
-
+  @media (max-width: 500px) {
+    width: 90%;
+    min-width: 300px;
+  }
 `
 
 export const Button = styled.div`
@@ -30,5 +38,4 @@ export const Button = styled.div`
   font-size: ${dimensions.fontSizeP};
   text-align: center;
   transition: .5s;
-  
 `

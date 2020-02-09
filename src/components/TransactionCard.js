@@ -1,8 +1,16 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import { patchingBill } from '../store/actions/actions';
 
-import { } from './style/TransactionCard.style';
+import {
+    CardContainer,
+    Card,
+    UpperRow,
+    MiddleRow,
+    BottomRow,
+    StyledButton,
+    ExpandButton,
+} from './style/TransactionCard.style'
 
 import TransactionsList from './TransactionsList'
 
@@ -19,9 +27,9 @@ const TransactionCard = (props) => {
     }
 
     return (
-        <div data-testid="TransactionCard">
-            <div>
-                <div>
+        <CardContainer data-testid="TransactionCard">
+            <Card>
+                <UpperRow>
                     {/* 
                         TO-DO: Add icon support. Image src seems to be defective.
                         <img src={transaction.iconUrl} /> 
@@ -29,39 +37,46 @@ const TransactionCard = (props) => {
                     <div className="name">{transaction.name}</div>
                     {
                         transaction.isBill ?
-                            <div
+                            <StyledButton
                                 onClick={() => updateTransactionHandler(false)}
                                 data-testid="RemoveButton"
                             >
                                 Remove Bill
-                            </div>
+                            </StyledButton>
                             :
-                            <div
+                            <StyledButton
                                 onClick={() => updateTransactionHandler(true)}
                                 data-testid="AddButton"
                             >
                                 Add as Bill
-                            </div>
+                            </StyledButton>
                     }
-                </div>
+                </UpperRow>
 
-                <div
+                <MiddleRow
                     onClick={() => setTransactionsVisible(!transactionsVisible)}
                 >
-                    V
-                </div>
+                    <div style={{ minWidth: "30%" }}>{transaction.transactions.length} Transactions</div>
+                    <ExpandButton
+                        visible={transactionsVisible}
+                    >
+                        V
+                    </ExpandButton>
+                </MiddleRow>
 
-                <div>
-                    <div>- $ {lastTransaction.amount} </div>
+                <BottomRow
+                    onClick={() => setTransactionsVisible(!transactionsVisible)}
+                >
+                    <div style={{ minWidth: "30%" }}>- $ {lastTransaction.amount} </div>
                     <div>On: {lastTransaction.date}</div>
-                </div>
+                </BottomRow>
 
-            </div>
+            </Card>
             <TransactionsList
                 transactions={transaction.transactions}
                 visible={transactionsVisible}
             />
-        </div>
+        </CardContainer>
     );
 }
 
