@@ -55,6 +55,7 @@ const TransactionCard = (props) => {
 
                 <MiddleRow
                     onClick={() => setTransactionsVisible(!transactionsVisible)}
+                    data-testid="MiddleRow"
                 >
                     <div style={{ minWidth: "30%" }}>{transaction.transactions.length} Transactions</div>
                     <ExpandButton

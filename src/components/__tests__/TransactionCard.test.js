@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 import TransactionCard from '../TransactionCard';
@@ -49,13 +49,13 @@ const testExpenseObject = {
 
 const testBillComponent = (
     <Provider store={store}>
-        <TransactionCard transaction={testBillObject}/>
+        <TransactionCard transaction={testBillObject} />
     </Provider>
 )
 
 const testExpenseComponent = (
     <Provider store={store}>
-        <TransactionCard transaction={testExpenseObject}/>
+        <TransactionCard transaction={testExpenseObject} />
     </Provider>
 )
 describe("TransactionCard", () => {
@@ -85,7 +85,18 @@ describe("TransactionCard", () => {
         expect(queryByTestId('RemoveButton')).not.toBeInTheDocument()
     })
 
-    // it('opens up TransactionsList when clicked', () => {
-    //     return false;
-    // })
+    it('toggles TransactionsList when clicked', () => {
+        const { queryByTestId } = render(
+            testExpenseComponent
+        ); 
+
+        expect(queryByTestId("TransactionsList")).not.toBeVisible();
+
+        fireEvent.click(queryByTestId("MiddleRow"));
+        expect(queryByTestId("TransactionsList")).toBeVisible();
+        
+        fireEvent.click(queryByTestId("MiddleRow"));
+        expect(queryByTestId("TransactionsList")).not.toBeVisible();
+
+    })
 })  
