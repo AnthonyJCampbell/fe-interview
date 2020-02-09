@@ -24,10 +24,21 @@ describe("Tab", () => {
     });
 
     it('shows the bills by default', () => {
-        return false
+        const { getByTestId, queryByTestId } = render(
+            testComponent
+        );
+        const Bills = getByTestId('Bills');
+        expect(Bills).toBeInTheDocument();
+        // Additionally, the Expenses should not be rendered
+        expect(queryByTestId('Expenses')).not.toBeInTheDocument()
     });
 
     it('renders a message when there are no transactions', () => {
-        return false
+        // By default, no transactions are passed. They're retrieved from store after initial render.
+        const { getByTestId } = render(
+            testComponent
+        );
+        const NoRecordsMessage = getByTestId('NoRecordsMessage');
+        expect(NoRecordsMessage).toBeInTheDocument();
     })
 })  
